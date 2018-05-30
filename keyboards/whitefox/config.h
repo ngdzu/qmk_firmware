@@ -77,4 +77,13 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //#define NO_ACTION_MACRO
 //#define NO_ACTION_FUNCTION
 
+
+/* Mouse button configuration */
+#define MOUSEKEY_DELAY             40
+#define MOUSEKEY_INTERVAL          20
+#define MOUSEKEY_MAX_SPEED         5
+#define MOUSEKEY_TIME_TO_MAX       30
+#define MOUSEKEY_WHEEL_MAX_SPEED   8
+#define MOUSEKEY_WHEEL_TIME_TO_MAX 40
+
 #endif
