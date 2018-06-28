@@ -1,8 +1,10 @@
 # Dzu's WhiteFox layout
 
 This keymapping is designed with these in mind: 
-- Minimize finger travel: The 2 most convenient keys on the keyboard subjectively are the caplock and the spacebar. 
-Therefore layer 1 is activated by pressing the caplock and layer 2 is activated by holding down both caplock and spacebar.
+- Minimize finger travel: 
+  - The most natural positions of your hands on the keyboard is all fingers on the home row and thumbs on the space bar. This layout is designed so that you can rest your fingers at the home position while enable you to access the most used features.
+  - In order not to move the  fingers too much, we need to take advantages of the most comfortable keys on the keyboard, which are E,S,D,F and I,J,K,L. In different layers, these key should have different functions, and they must be mapped to the most used functions such as IJKL keys to be used as the arrow keys.
+  - We also need function keys to be at the most convient positions. Two of them are the caplock position and the spacebar position. In this layout, f1 is placed at the caplock position. While holding down f1, holding down the spacebar brings you to layer 2.
 
   - To access mouse key, hold down f1 key (below tab key) and another key which is around the home row:
     - f1 + s key: mouse left
