@@ -8,8 +8,8 @@
 #define PRODUCT_ID      0x2260
 #define DEVICE_VER      0x0001
 #define MANUFACTURER    KBDFans
-#define PRODUCT         DZ60
-#define DESCRIPTION     DZ60 Keyboard
+#define PRODUCT         "Jennie KB"
+#define DESCRIPTION     "Dzu's Jennie"
 
 /* key matrix size */
 #define MATRIX_ROWS 5
