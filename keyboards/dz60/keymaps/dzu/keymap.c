@@ -1,6 +1,8 @@
 #include "dz60.h"
 
 
+#define _______ KC_TRNS
+
 #define M_MOVE_NEXT_LINE 	0
 #define M_MOVE_PREV_LINE 	1
 #define M_STEP_OUT 			2
@@ -53,6 +55,18 @@ enum dz60_keycodes {
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
+
+/* Qwerty
+ * ,--------------------------------------------------------------------------------------.
+ * | Tab    |   Q 	|   W  |   E  |   R  |   T  |   Y  |   U  |   I  |   O  |   P  | Bksp  |
+ * |--------+------+------+------+------+-------------+------+------+------+------+-------|
+ * | _WIN_FN| 	A		|   S  |   D  |   F  |   G  |   H  |   J  |   K  |   L  |   ;  |   "   |
+ * |--------+------+------+------+------+------|------+------+------+------+------+-------|
+ * | Shift  |   Z  	|   X  |   C  |   V  |   B  |   N  |   M  |   ,  |   .  |   /  |Sft/Ent|
+ * |--------+------+------+------+------+------+------+------+------+------+------+-------|
+ * | Power  |   ~  	| Alt  | GUI  |Lower |   TC/Space  |Raise | Next | Vol- | Vol+ |  Play |
+ * `--------------------------------------------------------------------------------------'
+ */
     [_WIN] = LAYOUT_63(
 		KC_ESC, KC_1, KC_2, KC_3, KC_4, KC_5, KC_6, KC_7, KC_8, KC_9, KC_0, KC_MINS, KC_EQL, KC_GRV, KC_BSLS, 
 		KC_TAB, KC_Q, KC_W, KC_E, KC_R, KC_T, KC_Y, KC_U, KC_I, KC_O, KC_P, KC_LBRC, KC_RBRC, KC_BSPC, 
@@ -62,25 +76,25 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 
 	[_WIN_FUNC] = LAYOUT_63(
-		RESET, 		KC_F1, KC_F2, 	KC_F3, 	KC_F4, 		KC_F5, KC_F6, KC_F7, 	KC_F8, KC_F9, 	KC_F10, KC_F11, 	KC_F12, KC_TRNS, KC_CAPS, 
-		KC_TRNS, KC_TRNS, KC_TRNS, KC_MS_U, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_UP, KC_TRNS, KC_TRNS, KC_TRNS, 	KC_TRNS, KC_TRNS, 
-		KC_TRNS, LT(_WIN_FUNC_DEBUG, KC_TRNS), KC_MS_L, KC_MS_D, KC_MS_R, KC_BTN2, KC_TRNS, KC_LEFT, KC_DOWN, KC_RGHT, KC_TRNS, KC_BTN1, KC_TRNS, 
-		KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, 
-		KC_TRNS, KC_TRNS, KC_TRNS, MO(_WIN_FUNC2), KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS),
+		RESET, 		KC_F1, KC_F2, 	KC_F3, 	KC_F4, 		KC_F5, KC_F6, KC_F7, 	KC_F8, KC_F9, 	KC_F10, KC_F11, 	KC_F12, _______, KC_CAPS, 
+		_______, _______, _______, KC_MS_U, _______, _______, _______, _______, KC_UP, _______, _______, _______, 	_______, _______, 
+		_______, LT(_WIN_FUNC_DEBUG, _______), KC_MS_L, KC_MS_D, KC_MS_R, KC_BTN2, _______, KC_LEFT, KC_DOWN, KC_RGHT, _______, KC_BTN1, _______, 
+		_______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, 
+		_______, _______, _______, MO(_WIN_FUNC2), _______, _______, _______, _______, _______),
 
 	[_WIN_FUNC_DEBUG] = LAYOUT_63(
-		KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, 
-		KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, M(M_MPL), KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, 
-		KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, M(M_FIND), KC_TRNS, KC_TRNS, CONT,   M(M_MNL), M(M_MCL), KC_TRNS, KC_TRNS, KC_TRNS, 
-		KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, 
-		KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, STEP_OV, STEP_IN, STEP_OUT, CONT, KC_TRNS),
+		_______, _______, _______, _______, _______, _______, _______, _______, _______,  _______, _______, _______, _______, _______, _______, 
+		_______, _______, _______, _______, _______, _______, _______, _______, M(M_MPL), _______, _______, _______, _______, _______, 
+		_______, _______, _______, _______, M(M_FIND), _______, _______, CONT,   M(M_MNL), M(M_MCL), _______, _______, _______, 
+		_______, _______, _______, _______, _______, _______, _______, _______, _______,  _______, _______, _______, _______, 
+		_______, _______, _______, _______, STEP_OV, STEP_IN, STEP_OUT, CONT, _______),
 
 	[_WIN_FUNC2] = LAYOUT_63(
-		KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, 
-		KC_TRNS, KC_TRNS, KC_TRNS, KC_WH_U, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_PGUP, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, 
-		KC_TRNS, KC_TRNS, KC_TRNS, KC_WH_D, KC_TRNS, KC_TRNS, KC_TRNS, KC_HOME, KC_PGDN, KC_END, KC_TRNS, KC_TRNS, KC_TRNS, 
-		KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, 
-		KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS),
+		_______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, 
+		_______, _______, _______, KC_WH_U, _______, _______, _______, _______, KC_PGUP, _______, _______, _______, _______, _______, 
+		_______, _______, _______, KC_WH_D, _______, _______, _______, KC_HOME, KC_PGDN, KC_END, _______, _______, _______, 
+		_______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, 
+		_______, _______, _______, _______, _______, _______, _______, _______, _______),
 
     [_MAC] = LAYOUT_63(
 		KC_ESC, KC_1, KC_2, KC_3, KC_4, KC_5, KC_6, KC_7, KC_8, KC_9, KC_0, KC_MINS, KC_EQL, KC_GRV, KC_BSLS, 
@@ -90,32 +104,32 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 		KC_LCTL, KC_LGUI, KC_LALT, KC_SPC, KC_RCTL, KC_RALT, KC_NO, KC_NO, MO(_LIGHT)),
 
 	[_MAC_FUNC] = LAYOUT_63(
-		RESET, 	KC_F1, 		KC_F2, KC_F3, 	KC_F4, 	KC_F5, 		KC_F6, KC_F7, 	KC_F8, KC_F9, 	KC_F10, 	KC_F11, KC_F12, KC_TRNS, KC_CAPS, 
-		KC_TRNS, KC_TRNS, KC_TRNS, KC_MS_U, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_UP, KC_TRNS, KC_TRNS, 	KC_TRNS, KC_TRNS, KC_DEL, 
-		KC_TRNS, LT(_MAC_FUNC_DEBUG, KC_TRNS), KC_MS_L, KC_MS_D, KC_MS_R, KC_BTN2, KC_TRNS, KC_LEFT, KC_DOWN, KC_RGHT, KC_TRNS, KC_BTN1, KC_TRNS, 
-		KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, 
-		KC_TRNS, KC_TRNS, KC_TRNS, MO(_MAC_FUNC2), KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS),
+		RESET, 	KC_F1, 		KC_F2, KC_F3, 	KC_F4, 	KC_F5, 		KC_F6, KC_F7, 	KC_F8, KC_F9, 	KC_F10, 	KC_F11, KC_F12, _______, KC_CAPS, 
+		_______, _______, _______, KC_MS_U, _______, _______, _______, _______, KC_UP, _______, _______, 	_______, _______, KC_DEL, 
+		_______, LT(_MAC_FUNC_DEBUG, _______), KC_MS_L, KC_MS_D, KC_MS_R, KC_BTN2, _______, KC_LEFT, KC_DOWN, KC_RGHT, _______, KC_BTN1, _______, 
+		_______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, 
+		_______, _______, _______, MO(_MAC_FUNC2), _______, _______, _______, _______, _______),
 
 	[_MAC_FUNC_DEBUG] = LAYOUT_63(
-		KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, 
-		KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, M(M_MPL), KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, 
-		KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, M(M_FIND), KC_TRNS, KC_TRNS, CONT,   M(M_MNL), M(M_MCL), KC_TRNS, KC_TRNS, KC_TRNS, 
-		KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, 
-		KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, STEP_OV_MAC, STEP_IN_MAC, STEP_OUT_MAC, CONT_MAC, KC_TRNS),
+		_______, _______, _______, _______, _______, _______, _______, _______, _______,  _______, _______, _______, _______, _______, _______, 
+		_______, _______, _______, _______, _______, _______, _______, _______, M(M_MPL), _______, _______, _______, _______, _______, 
+		_______, _______, _______, _______, _______, _______, _______, CONT,   M(M_MNL), M(M_MCL), _______, _______, _______, 
+		_______, _______, _______, _______, _______, _______, _______, _______, _______,  _______, _______, _______, _______, 
+		_______, _______, _______, _______, STEP_OV_MAC, STEP_IN_MAC, STEP_OUT_MAC, CONT_MAC, _______),
 
 	[_MAC_FUNC2] = LAYOUT_63(
-		KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, 
-		KC_TRNS, KC_TRNS, KC_TRNS, KC_WH_U, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_PGUP, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, 
-		KC_TRNS, KC_TRNS, KC_TRNS, KC_WH_D, KC_TRNS, KC_TRNS, KC_TRNS, KC_HOME, KC_PGDN, KC_END, KC_TRNS, KC_TRNS, KC_TRNS, 
-		KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, 
-		KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS),
+		_______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, 
+		_______, _______, _______, KC_WH_U, _______, _______, _______, _______, KC_PGUP, _______, _______, _______, _______, _______, 
+		_______, _______, _______, KC_WH_D, _______, _______, _______, KC_HOME, KC_PGDN, KC_END, _______, _______, _______, 
+		_______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, 
+		_______, _______, _______, _______, _______, _______, _______, _______, _______),
 
 	[_LIGHT] = LAYOUT_63(
-        KC_TRNS, WIN 	, MAC, 		KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_MUTE, KC_VOLD, KC_VOLU, KC_TRNS, KC_TRNS,
-        KC_TRNS, RGB_TOG, RGB_MOD, RGB_HUI, RGB_HUD, RGB_SAI, RGB_SAD, RGB_VAI, RGB_VAD, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-        KC_TRNS, KC_TRNS, KC_TRNS, RGB_M_G, RGB_M_X, RGB_M_SN, RGB_M_R, RGB_M_B	, RGB_M_K, RGB_M_SW, KC_TRNS, KC_TRNS, KC_TRNS, 
-		KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, BL_DEC,  BL_TOGG, BL_INC,  BL_STEP, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, 
-		KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS)
+        _______, WIN 	, MAC, 		_______, _______, _______, _______, _______, _______, _______, KC_MUTE, KC_VOLD, KC_VOLU, _______, _______,
+        _______, RGB_TOG, RGB_MOD, RGB_HUI, RGB_HUD, RGB_SAI, RGB_SAD, RGB_VAI, RGB_VAD, _______, _______, _______, _______, _______,
+        _______, _______, _______, RGB_M_G, RGB_M_X, RGB_M_SN, RGB_M_R, RGB_M_B	, RGB_M_K, RGB_M_SW, _______, _______, _______, 
+		_______, _______, _______, _______, BL_DEC,  BL_TOGG, BL_INC,  BL_STEP, _______, _______, _______, _______, _______, 
+		_______, _______, _______, _______, _______, _______, _______, _______, _______)
 
 };
 
