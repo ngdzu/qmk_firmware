@@ -38,15 +38,6 @@ enum planck_keycodes {
 };
 
 
-// #define _QWERTY 0
-// #define _LOWER  1
-// #define _RAISE  2
-// #define _FUNC   3
-// #define _FN1    4
-// #define _FN2    5
-
-
-
 #define LOWER MO(_LOWER)
 #define RAISE MO(_RAISE)
 #define FUNCT MO(_FUNC)
@@ -99,14 +90,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------|------+------+------+------+------+------|
  * | Shift|   Z  |   X  |   C  |   V  |   B  |   N  |   M  |   ,  |   .  |   /  |Enter |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | Ctrl | Alt  | GUI  | Fn1   |Lower|    Space    |Raise | Fn2 | Down  |RCtrl |RShift|
+ * | Ctrl | Alt  | GUI  | Fn1  |Shift |    Space    |Ctrl  | Fn2 | Down  |RCtrl |RShift|
  * `-----------------------------------------------------------------------------------'
  */
 [_QWERTY] = LAYOUT_planck_grid(
   KC_TAB  , KC_Q    , KC_W    , KC_E    , KC_R    , KC_T    , KC_Y    , KC_U    , KC_I    , KC_O    , KC_P    , KC_BSPC ,
   FUNCT   , KC_A    , KC_S    , KC_D    , KC_F    , KC_G    , KC_H    , KC_J    , KC_K    , KC_L    , KC_SCLN , KC_QUOT ,
   KC_LSFT , KC_Z    , KC_X    , KC_C    , KC_V    , KC_B    , KC_N    , KC_M    , KC_COMM , KC_DOT  , KC_SLSH , KC_ENT  ,
-  KC_LCTL , KC_LALT , KC_LGUI , FN1     , LOWER   , KC_SPC  , KC_SPC  , RAISE   , ________, ________, KC_RCTL , KC_RSFT
+  FN1     , KC_LALT , KC_LGUI , LOWER   , KC_LSFT , KC_SPC  , KC_SPC  , KC_LCTL , RAISE   , ________, KC_RCTL , KC_LALT
 ),
 
 /* Lower
@@ -115,7 +106,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+-------------+------+------+------+------+------|
  * | Del  |  F1  |  F2  |  F3  |  F4  |  F5  |  F6  |   _  |   +  |   {  |   }  |  |   |
  * |------+------+------+------+------+------|------+------+------+------+------+------|
- * |      |  F7  |  F8  |  F9  |  F10 |  F11 |  F12 |ISO ~ |ISO | |      |      |Enter |
+ * |      |  F7  |  F8  |  F9  |  F10 |  F11 |  F12 |ISO ~ |ISO | |      |      |      |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * |Reset |      |      |      |      |             |      | Next | Vol- | Vol+ | Play |
  * `-----------------------------------------------------------------------------------'
@@ -133,7 +124,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+-------------+------+------+------+------+------|
  * | Del  |  F1  |  F2  |  F3  |  F4  |  F5  |  F6  |   -  |   =  |   [  |   ]  |  \   |
  * |------+------+------+------+------+------|------+------+------+------+------+------|
- * |      |  F7  |  F8  |  F9  |  F10 |  F11 |  F12 |ISO # |ISO / |      |      |Enter |
+ * |      |  F7  |  F8  |  F9  |  F10 |  F11 |  F12 |ISO # |ISO / |      |      |      |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * |Reset |      |      |      |      |             |      | Next | Vol- | Vol+ | Play |
  * `-----------------------------------------------------------------------------------'
