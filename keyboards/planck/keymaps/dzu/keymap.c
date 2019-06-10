@@ -133,7 +133,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_GRV  , KC_1    , KC_2    , KC_3    , KC_4    , KC_5    , KC_6    , KC_7    , KC_8    , KC_9    , KC_0    ,KC_BSPC  ,
   KC_DEL  , KC_F1   , KC_F2   , KC_F3   , KC_F4   , KC_F5   , KC_F6   , KC_MINS , KC_EQL  , KC_LBRC , KC_RBRC , KC_BSLS ,
   ________, KC_F7   , KC_F8   , KC_F9   , KC_F10  , KC_F11  , KC_F12  , KC_NUHS , KC_NUBS , ________, ________, ________,
-  RESET   , ________, ________, ________, ________, ________, ________, ________, KC_MNXT , KC_VOLD , KC_VOLU , KC_MPLY
+  RESET   , ________, ________, ________, ________, ________, ________, ________, ________, ________, ________, ________
 ),
 
 /* Plover layer (http://opensteno.org)
@@ -197,8 +197,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */ 
 
 [_FUNC] = LAYOUT_planck_grid(
-  ________, ________, ________, KC_MS_U , ________, ________, ________, ________, KC_UP   , ________, ________, ________,
-  ________, LT_FN2  , KC_MS_L , KC_MS_D , KC_MS_R , KC_BTN1 , ________, KC_LEFT , KC_DOWN , KC_RGHT , ________, KC_BTN1 ,
+  KC_ESC  , ________, ________, KC_MS_U , ________, ________, ________, ________, KC_UP   , ________, ________, ________,
+  ________, LT_FN2  , KC_MS_L , KC_MS_D , KC_MS_R , KC_BTN2 , ________, KC_LEFT , KC_DOWN , KC_RGHT , ________, KC_BTN1 ,
   ________, ________, ________, ________, ________, ________, ________, ________, ________, ________, ________, ________,
   ________, ________, ________, ________, ________, ________, ________, ________, ________, ________, ________, ________
 ),
