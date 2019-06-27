@@ -51,11 +51,15 @@ enum macros
   M_STEP_OUT,
   M_MOVE_CUR_LINE,
   M_FIND,
+  M_FIND_NEX,
   M_FIND_REV,
   M_HOME,
   M_END,
   M_SYMBOL,
   M_FILE, 
+  M_COPY,
+  M_PASTE,
+  M_CUT,
   M_000 // 3 zeros
 };
 
@@ -63,12 +67,15 @@ enum macros
 
 #define FIND M(M_FIND)
 #define RFIND M(M_FIND_REV)
+#define NFIND M(M_FIND_NEX)
 
 #define SYMBOL M(M_SYMBOL)
 #define FILE M(M_FILE)
 #define _000 M(M_000)
 
-
+#define CPY M(M_COPY)
+#define PST M(M_PASTE)
+#define CUT M(M_CUT)
 
 #define M_MNL M_MOVE_NEXT_LINE
 #define M_MPL M_MOVE_PREV_LINE
@@ -243,8 +250,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [_FC2] = LAYOUT_planck_grid(
         XXXXXXXX, XXXXXXXX, XXXXXXXX, SYMBOL  , FILE    , XXXXXXXX, XXXXXXXX, KC_F7   , KC_F8   , KC_F9   , KC_F10  , XXXXXXXX,
-        XXXXXXXX, XXXXXXXX, XXXXXXXX, RFIND   , FIND    , XXXXXXXX, XXXXXXXX, KC_F4   , KC_F5   , KC_F6   , KC_F11  , XXXXXXXX,
-        XXXXXXXX, XXXXXXXX, XXXXXXXX, XXXXXXXX, XXXXXXXX, XXXXXXXX, XXXXXXXX, KC_F1   , KC_F2   , KC_F3   , KC_F12  , ________,
+        XXXXXXXX, XXXXXXXX, NFIND   , RFIND   , FIND    , XXXXXXXX, XXXXXXXX, KC_F4   , KC_F5   , KC_F6   , KC_F11  , XXXXXXXX,
+        XXXXXXXX, XXXXXXXX, CUT     , CPY     , PST     , XXXXXXXX, XXXXXXXX, KC_F1   , KC_F2   , KC_F3   , KC_F12  , ________,
         XXXXXXXX, XXXXXXXX, XXXXXXXX, ________, ________, ________, ________, ________, STEP_OV , STEP_IN , STEP_OUT, CONT), 
 
     [_FC3] = LAYOUT_planck_grid(
@@ -302,27 +309,49 @@ const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt) {
 				return MACRO( D(LSFT), T(F3), U(LSFT), END );
 			}
 			break;
-		case M_CONTINUE_MAC:
-			if (record->event.pressed) {
-				return MACRO( D(LCTL), D(LALT),T(Y), U(LALT),U(LCTL), END );
-			}
-			break;
-		case M_FILE:
-			if (record->event.pressed) {
+    case M_FIND_NEX:
+      if (record->event.pressed)
+      {
+        return MACRO(T(F3), END);
+      }
+      break;
+    case M_COPY:
+      if (record->event.pressed)
+      {
+        return MACRO(D(LCTL), T(C), U(LCTL), END);
+      }
+      break;
+    case M_PASTE:
+      if (record->event.pressed)
+      {
+        return MACRO(D(LCTL), T(V), U(LCTL), END);
+      }
+      break;
+    case M_CUT:
+      if (record->event.pressed)
+      {
+        return MACRO(D(LCTL), T(X), U(LCTL), END);
+      }
+      break;
+    case M_FILE:
+      if (record->event.pressed)
+      {
         return MACRO(D(LALT), D(LSFT), T(O), U(LSFT), U(LALT), END);
       }
-			break;
-		case M_SYMBOL:
-			if (record->event.pressed) {
+      break;
+    case M_SYMBOL:
+      if (record->event.pressed)
+      {
         return MACRO(D(LALT), D(LSFT), T(S), U(LSFT), U(LALT), END);
       }
-			break;
-		case M_000:
-			if (record->event.pressed) {
-        return MACRO(T(0), T(0),T(0), END);
+      break;
+    case M_000:
+      if (record->event.pressed)
+      {
+        return MACRO(T(0), T(0), T(0), END);
       }
-			break;
-	}
+      break;
+  }
 	return MACRO_NONE;
 }
 
