@@ -2,6 +2,7 @@
 
 
 #define _______ KC_TRNS
+#define XXXXXXX KC_NO
 
 #define M_MOVE_NEXT_LINE 	0
 #define M_MOVE_PREV_LINE 	1
@@ -52,35 +53,46 @@ enum dz60_keycodes {
   MAC
 };
 
+#define _MFN  MO(_MAC_FUNC)
+#define _WFN  MO(_WIN_FUNC)
+#define _WFN2  MO(_WIN_FUNC2)
+#define _MFN2  MO(_MAC_FUNC2)
+
+
+#define _LFN  MO(_LIGHT)
+
+#define _WDEB LT(_WIN_FUNC_DEBUG, _______)
+#define _MDEB LT(_MAC_FUNC_DEBUG, _______)
+
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 
 /* Qwerty
- * ,--------------------------------------------------------------------------------------.
- * | Tab    |   Q 	|   W  |   E  |   R  |   T  |   Y  |   U  |   I  |   O  |   P  | Bksp  |
- * |--------+------+------+------+------+-------------+------+------+------+------+-------|
- * | _WIN_FN| 	A		|   S  |   D  |   F  |   G  |   H  |   J  |   K  |   L  |   ;  |   "   |
- * |--------+------+------+------+------+------|------+------+------+------+------+-------|
- * | Shift  |   Z  	|   X  |   C  |   V  |   B  |   N  |   M  |   ,  |   .  |   /  |Sft/Ent|
- * |--------+------+------+------+------+------+------+------+------+------+------+-------|
- * | Power  |   ~  	| Alt  | GUI  |Lower |   TC/Space  |Raise | Next | Vol- | Vol+ |  Play |
- * `--------------------------------------------------------------------------------------'
+ * ,-------------------------------------------------------------------------------------------------------.
+ * | Tab    |   Q 	|   W  |   E  |   R  |   T  |   Y  |   U  |   I  |   O  |   P  |    [  |  ]   | BKSPC  |
+ * |-------------------------------------------------------------------------------------------------------|
+ * | _WIN_FN| 	A		|   S  |   D  |   F  |   G  |   H  |   J  |   K  |   L  |   ;  |   "   |     ENTER     |
+ * |-------------------------------------------------------------------------------------------------------|
+ * | Shift  |   Z  	|   X  |   C  |   V  |   B  |   N  |   M  |   ,  |   .  |   /  |    SHIFT     |  DEL   | 
+ * |-------------------------------------------------------------------------------------------------------|
+ * | CTRL     |  WIN    | Alt    |                SPACE                |CTRL  |  ALT |      |      |_LIGHT |
+ * `-------------------------------------------------------------------------------------------------------'
  */
     [_WIN] = LAYOUT_63(
-		KC_ESC, KC_1, KC_2, KC_3, KC_4, KC_5, KC_6, KC_7, KC_8, KC_9, KC_0, KC_MINS, KC_EQL, KC_GRV, KC_BSLS, 
-		KC_TAB, KC_Q, KC_W, KC_E, KC_R, KC_T, KC_Y, KC_U, KC_I, KC_O, KC_P, KC_LBRC, KC_RBRC, KC_BSPC, 
-		MO(_WIN_FUNC), KC_A, KC_S, KC_D, KC_F, KC_G, KC_H, KC_J, KC_K, KC_L, KC_SCLN, KC_QUOT, KC_ENT, 
-		KC_LSFT, KC_Z, KC_X, KC_C, KC_V, KC_B, KC_N, KC_M, KC_COMM, KC_DOT, KC_SLSH, KC_RSFT, KC_DEL, 
-		KC_LCTL, KC_LGUI, KC_LALT, KC_SPC, KC_RCTL, KC_RALT, KC_NO, KC_NO, MO(_LIGHT)),
+		KC_ESC  , KC_1   , KC_2   , KC_3   , KC_4   , KC_5   , KC_6  , KC_7   , KC_8    , KC_9   , KC_0     , KC_MINS , KC_EQL  , KC_GRV , KC_BSLS, 
+		KC_TAB  , KC_Q   , KC_W   , KC_E   , KC_R   , KC_T   , KC_Y  , KC_U   , KC_I    , KC_O   , KC_P     , KC_LBRC , KC_RBRC , KC_BSPC, 
+		_WFN    , KC_A   , KC_S   , KC_D   , KC_F   , KC_G   , KC_H  , KC_J   , KC_K    , KC_L   , KC_SCLN  , KC_QUOT , KC_ENT  , 
+		KC_LSFT , KC_Z   , KC_X   , KC_C   , KC_V   , KC_B   , KC_N  , KC_M   , KC_COMM , KC_DOT , KC_SLSH  , KC_RSFT           , KC_DEL , 
+		KC_LCTL , KC_LGUI, KC_LALT,                     KC_SPC                          , KC_RCTL, KC_RALT  , XXXXXXX , XXXXXXX , _LFN   ,
 
 
 	[_WIN_FUNC] = LAYOUT_63(
-		RESET, 		KC_F1, KC_F2, 	KC_F3, 	KC_F4, 		KC_F5, KC_F6, KC_F7, 	KC_F8, KC_F9, 	KC_F10, KC_F11, 	KC_F12, _______, KC_CAPS, 
-		_______, _______, _______, KC_MS_U, _______, _______, _______, _______, KC_UP, _______, _______, _______, 	_______, _______, 
-		_______, LT(_WIN_FUNC_DEBUG, _______), KC_MS_L, KC_MS_D, KC_MS_R, KC_BTN2, _______, KC_LEFT, KC_DOWN, KC_RGHT, _______, KC_BTN1, _______, 
+		RESET, 		KC_F1, KC_F2   , KC_F3   , KC_F4 , KC_F5  , KC_F6  , KC_F7  , KC_F8  , KC_F9  , KC_F10 , KC_F11 , KC_F12 , _______, KC_CAPS, 
+		_______, _______, _______, KC_MS_U, _______, _______, _______, _______, KC_UP  , _______, _______, _______, _______, _______, 
+		_______, _WDEB  , KC_MS_L, KC_MS_D, KC_MS_R, KC_BTN2, _______, KC_LEFT, KC_DOWN, KC_RGHT, _______, KC_BTN1, _______, 
 		_______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, 
-		_______, _______, _______, MO(_WIN_FUNC2), _______, _______, _______, _______, _______),
+		_______, _______, _______,                  _WFN2                     , _______, _______, _______, _______, _______),
 
 	[_WIN_FUNC_DEBUG] = LAYOUT_63(
 		_______, _______, _______, _______, _______, _______, _______, _______, _______,  _______, _______, _______, _______, _______, _______, 
@@ -97,37 +109,37 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 		_______, _______, _______, _______, _______, _______, _______, _______, _______),
 
     [_MAC] = LAYOUT_63(
-		KC_ESC, KC_1, KC_2, KC_3, KC_4, KC_5, KC_6, KC_7, KC_8, KC_9, KC_0, KC_MINS, KC_EQL, KC_GRV, KC_BSLS, 
-		KC_TAB, KC_Q, KC_W, KC_E, KC_R, KC_T, KC_Y, KC_U, KC_I, KC_O, KC_P, KC_LBRC, KC_RBRC, KC_BSPC, 
-		MO(_MAC_FUNC), KC_A, KC_S, KC_D, KC_F, KC_G, KC_H, KC_J, KC_K, KC_L, KC_SCLN, KC_QUOT, KC_ENT, 
-		KC_LSFT, KC_Z, KC_X, KC_C, KC_V, KC_B, KC_N, KC_M, KC_COMM, KC_DOT, KC_SLSH, KC_RSFT, KC_NO, 
-		KC_LCTL, KC_LGUI, KC_LALT, KC_SPC, KC_RCTL, KC_RALT, KC_NO, KC_NO, MO(_LIGHT)),
+		KC_ESC  , KC_1, KC_2, KC_3, KC_4, KC_5, KC_6, KC_7, KC_8, KC_9, KC_0, KC_MINS, KC_EQL, KC_GRV, KC_BSLS, 
+		KC_TAB  , KC_Q, KC_W, KC_E, KC_R, KC_T, KC_Y, KC_U, KC_I, KC_O, KC_P, KC_LBRC, KC_RBRC, KC_BSPC, 
+		_MFN    , KC_A, KC_S, KC_D, KC_F, KC_G, KC_H, KC_J, KC_K, KC_L, KC_SCLN, KC_QUOT, KC_ENT, 
+		KC_LSFT , KC_Z, KC_X, KC_C, KC_V, KC_B, KC_N, KC_M, KC_COMM, KC_DOT, KC_SLSH, KC_RSFT, KC_NO, 
+		KC_LCTL , KC_LGUI, KC_LALT, KC_SPC, KC_RCTL, KC_RALT, KC_NO, KC_NO, _LFN,
 
 	[_MAC_FUNC] = LAYOUT_63(
-		RESET, 	KC_F1, 		KC_F2, KC_F3, 	KC_F4, 	KC_F5, 		KC_F6, KC_F7, 	KC_F8, KC_F9, 	KC_F10, 	KC_F11, KC_F12, _______, KC_CAPS, 
-		_______, _______, _______, KC_MS_U, _______, _______, _______, _______, KC_UP, _______, _______, 	_______, _______, KC_DEL, 
-		_______, LT(_MAC_FUNC_DEBUG, _______), KC_MS_L, KC_MS_D, KC_MS_R, KC_BTN2, _______, KC_LEFT, KC_DOWN, KC_RGHT, _______, KC_BTN1, _______, 
-		_______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, 
-		_______, _______, _______, MO(_MAC_FUNC2), _______, _______, _______, _______, _______),
+		RESET  , 	KC_F1 , KC_F2  , KC_F3  , KC_F4  , KC_F5  , KC_F6  , KC_F7  , KC_F8  , KC_F9  , KC_F10 , KC_F11 , KC_F12 , _______, KC_CAPS, 
+		_______, _______, _______, KC_MS_U, _______, _______, _______, _______, KC_UP  , _______, _______, _______, _______, KC_DEL , 
+		_______, _MDEB  , KC_MS_L, KC_MS_D, KC_MS_R, KC_BTN2, _______, KC_LEFT, KC_DOWN, KC_RGHT, _______, KC_BTN1, _______         , 
+		_______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______         , _______, 
+		_______, _______, _______,                           _MFN2                     , _______, _______, _______, _______, _______),
 
 	[_MAC_FUNC_DEBUG] = LAYOUT_63(
 		_______, _______, _______, _______, _______, _______, _______, _______, _______,  _______, _______, _______, _______, _______, _______, 
 		_______, _______, _______, _______, _______, _______, _______, _______, M(M_MPL), _______, _______, _______, _______, _______, 
-		_______, _______, _______, _______, _______, _______, _______, CONT,   M(M_MNL), M(M_MCL), _______, _______, _______, 
+		_______, _______, _______, _______, _______, _______, _______, CONT   , M(M_MNL), M(M_MCL), _______, _______, _______, 
 		_______, _______, _______, _______, _______, _______, _______, _______, _______,  _______, _______, _______, _______, 
-		_______, _______, _______, _______, STEP_OV_MAC, STEP_IN_MAC, STEP_OUT_MAC, CONT_MAC, _______),
+		_______, _______, _______, _______                                    ,STEP_OV_MAC, STEP_IN_MAC, STEP_OUT_MAC, CONT_MAC, _______),
 
 	[_MAC_FUNC2] = LAYOUT_63(
 		_______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, 
 		_______, _______, _______, KC_WH_U, _______, _______, _______, _______, KC_PGUP, _______, _______, _______, _______, _______, 
-		_______, _______, _______, KC_WH_D, _______, _______, _______, KC_HOME, KC_PGDN, KC_END, _______, _______, _______, 
-		_______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, 
-		_______, _______, _______, _______, _______, _______, _______, _______, _______),
+		_______, _______, _______, KC_WH_D, _______, _______, _______, KC_HOME, KC_PGDN, KC_END , _______, _______, _______         , 
+		_______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______         , _______, 
+		_______, _______, _______, _______                                                      , _______, _______, _______, _______, _______),
 
 	[_LIGHT] = LAYOUT_63(
-        _______, WIN 	, MAC, 		_______, _______, _______, _______, _______, _______, _______, KC_MUTE, KC_VOLD, KC_VOLU, _______, _______,
-        _______, RGB_TOG, RGB_MOD, RGB_HUI, RGB_HUD, RGB_SAI, RGB_SAD, RGB_VAI, RGB_VAD, _______, _______, _______, _______, _______,
-        _______, _______, _______, RGB_M_G, RGB_M_X, RGB_M_SN, RGB_M_R, RGB_M_B	, RGB_M_K, RGB_M_SW, _______, _______, _______, 
+    _______, WIN 	  , MAC    , _______, _______, _______, _______, _______, _______, _______, KC_MUTE, KC_VOLD, KC_VOLU, _______, _______,
+    _______, RGB_TOG, RGB_MOD, RGB_HUI, RGB_HUD, RGB_SAI, RGB_SAD, RGB_VAI, RGB_VAD, _______, _______, _______, _______, _______,
+    _______, _______, _______, RGB_M_G, RGB_M_X, RGB_M_SN, RGB_M_R, RGB_M_B	, RGB_M_K, RGB_M_SW, _______, _______, _______, 
 		_______, _______, _______, _______, BL_DEC,  BL_TOGG, BL_INC,  BL_STEP, _______, _______, _______, _______, _______, 
 		_______, _______, _______, _______, _______, _______, _______, _______, _______)
 
